@@ -1,8 +1,8 @@
 ﻿using Loxifi.Exceptions;
-using Loxifi.JsonClient.Interfaces;
+using Loxifi.Interfaces;
 using System.Text;
 
-namespace Loxifi.JsonClient
+namespace Loxifi
 {
 	public class JsonClient
 	{
@@ -82,6 +82,14 @@ namespace Loxifi.JsonClient
 		public async Task PutJsonAsync(Uri requestUri, object content, CancellationToken cancellationToken) => await HttpClient.PutAsync(requestUri, BuildContent(content), cancellationToken);
 
 		public async Task PutJsonAsync(Uri requestUri, object content) => await HttpClient.PutAsync(requestUri, BuildContent(content));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
 
 		private StringContent BuildContent(object toPost)
 		{

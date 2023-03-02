@@ -1,7 +1,7 @@
-﻿using Loxifi.JsonClient.Interfaces;
-using Loxifi.JsonClient.Serializers;
+﻿using Loxifi.Interfaces;
+using Loxifi.Serializers;
 
-namespace Loxifi.JsonClient
+namespace Loxifi
 {
 	public class JsonClientSettings
 	{

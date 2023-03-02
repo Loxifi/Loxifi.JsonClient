@@ -1,4 +1,4 @@
-﻿namespace Loxifi.JsonClient
+﻿namespace Loxifi
 {
 	public class JsonSerializerSettings
 	{

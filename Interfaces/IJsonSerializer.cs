@@ -1,4 +1,4 @@
-﻿namespace Loxifi.JsonClient.Interfaces
+﻿namespace Loxifi.Interfaces
 {
 	public interface IJsonSerializer
 	{
