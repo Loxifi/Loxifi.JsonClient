@@ -24,6 +24,14 @@ namespace Loxifi
 
 		public JsonSerializerSettings JsonSerializerSettings { get; private set; }
 
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri) => await this.ReadResponse<TOut>(this.HttpClient.DeleteAsync(requestUri));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri, CancellationToken cancellationToken) => await this.ReadResponse<TOut>(this.HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri, CancellationToken cancellationToken) => await this.ReadResponse<TOut>(this.HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri) => await this.ReadResponse<TOut>(this.HttpClient.DeleteAsync(requestUri));
+
 		public async Task<TOut> GetJsonAsync<TOut>(string requestUri, CancellationToken cancellationToken) => await this.ReadResponse<TOut>(this.HttpClient.GetAsync(requestUri, cancellationToken));
 
 		public async Task<TOut> GetJsonAsync<TOut>(Uri requestUri) => await this.ReadResponse<TOut>(this.HttpClient.GetAsync(requestUri));
@@ -83,14 +91,6 @@ namespace Loxifi
 		public async Task PutJsonAsync(Uri requestUri, object content, CancellationToken cancellationToken) => await this.HttpClient.PutAsync(requestUri, this.BuildContent(content), cancellationToken);
 
 		public async Task PutJsonAsync(Uri requestUri, object content) => await this.HttpClient.PutAsync(requestUri, this.BuildContent(content));
-
-		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
-
-		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
-
-		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
-
-		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
 
 		private StringContent BuildContent(object toPost)
 		{

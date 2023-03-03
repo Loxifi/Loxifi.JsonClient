@@ -5,6 +5,10 @@ namespace Loxifi.Serializers
 {
 	public class SystemTextJsonSerializer : IJsonSerializer
 	{
+		public T Deserialize<T>(string json, JsonSerializerSettings settings = null) => JsonSerializer.Deserialize<T>(json, this.BuildOptions(settings));
+
+		public string Serialize<T>(T objn, JsonSerializerSettings settings = null) => JsonSerializer.Serialize(objn, this.BuildOptions(settings));
+
 		private JsonSerializerOptions BuildOptions(JsonSerializerSettings settings)
 		{
 			JsonSerializerOptions options = new()
@@ -16,11 +20,8 @@ namespace Loxifi.Serializers
 					_ => throw new NotImplementedException(),
 				}
 			};
-			
+
 			return options;
 		}
-		public T Deserialize<T>(string json, JsonSerializerSettings settings = null) => JsonSerializer.Deserialize<T>(json, this.BuildOptions(settings));
-
-		public string Serialize<T>(T objn, JsonSerializerSettings settings = null) => JsonSerializer.Serialize(objn, this.BuildOptions(settings));
 	}
 }

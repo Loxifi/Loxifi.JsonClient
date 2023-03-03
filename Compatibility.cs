@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Loxifi
+﻿namespace Loxifi
 {
 #if NETSTANDARD2_0
 	public static class HttpClientExtensions

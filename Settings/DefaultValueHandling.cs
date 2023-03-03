@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Loxifi.Settings
+﻿namespace Loxifi.Settings
 {
 	public enum DefaultValueHandling
 	{
