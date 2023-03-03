@@ -1,6 +1,9 @@
-﻿namespace Loxifi.JsonClient
+﻿using Loxifi.Settings;
+
+namespace Loxifi
 {
 	public class JsonSerializerSettings
 	{
+		public DefaultValueHandling DefaultValueHandling { get; set; } = DefaultValueHandling.Serialize;
 	}
 }

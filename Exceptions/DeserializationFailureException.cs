@@ -4,7 +4,7 @@
 	{
 		public DeserializationFailureException(HttpResponseMessage response, Exception innerException) : base("An exception has occurred deserializing the response", innerException)
 		{
-			Response = response;
+			this.Response = response;
 		}
 
 		public HttpResponseMessage Response { get; private set; }
