@@ -84,6 +84,14 @@ namespace Loxifi
 
 		public async Task PutJsonAsync(Uri requestUri, object content) => await this.HttpClient.PutAsync(requestUri, this.BuildContent(content));
 
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(string requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri, CancellationToken cancellationToken) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri, cancellationToken));
+
+		public async Task<TOut> DeleteJsonAsync<TOut>(Uri requestUri) => await ReadResponse<TOut>(HttpClient.DeleteAsync(requestUri));
+
 		private StringContent BuildContent(object toPost)
 		{
 			try

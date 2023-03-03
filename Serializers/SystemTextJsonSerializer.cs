@@ -16,7 +16,7 @@ namespace Loxifi.Serializers
 					_ => throw new NotImplementedException(),
 				}
 			};
-
+			
 			return options;
 		}
 		public T Deserialize<T>(string json, JsonSerializerSettings settings = null) => JsonSerializer.Deserialize<T>(json, this.BuildOptions(settings));
